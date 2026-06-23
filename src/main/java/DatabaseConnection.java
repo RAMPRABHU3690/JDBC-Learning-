@@ -19,20 +19,21 @@ public class DatabaseConnection {
             }
             
             
-            //Creating statement
-        	Statement statement = connection.createStatement();
+          // Creating statement
+            Statement statement = connection.createStatement();
             
-        	//Execute query
-            String sql="insert into students values('Ramparbhu.B',20,'ECE')";
+            // 2. Execute query (Modified to DELETE a record)
+            // This will delete the student named 'Ramparbhu.B'
+            String sql = "delete from students where name = 'cdv'";
             
             int rowAffected = statement.executeUpdate(sql);
             
-    		if(rowAffected==0) {
-    			System.out.print("Not able to insert the data");
-    		}else {
-    			System.out.print(rowAffected+" Data insert Successfully!!");
-    		}
-    		
+            // 3. Check the result
+            if (rowAffected == 0) {
+                System.out.print("Not able to delete the data (Record not found)");
+            } else {
+                System.out.print(rowAffected + " Data deleted Successfully!!");
+            }
 
         } catch (SQLException e) {
             System.out.println("Connection failed!");
