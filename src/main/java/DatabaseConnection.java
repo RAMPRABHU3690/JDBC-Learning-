@@ -18,25 +18,28 @@ public class DatabaseConnection {
                 System.out.println("Successfully connected to the PostgreSQL server!");
             }
             
-            
-            //Creating statement
-        	Statement statement = connection.createStatement();
-            
-        	//Execute query
-            String sql="insert into students values('Ramparbhu.B',20,'ECE')";
-            
-            int rowAffected = statement.executeUpdate(sql);
-            
+        	//Creating statement
+    		Statement statement = connection.createStatement();
+    		
+    		//Execute query
+            String sql="update students set name='Ramprabhu.B' where age=20 ";
+    		
+    		int rowAffected = statement.executeUpdate(sql);
+    		
     		if(rowAffected==0) {
-    			System.out.print("Not able to insert the data");
+    			System.out.print("Not able to update the data");
     		}else {
-    			System.out.print(rowAffected+" Data insert Successfully!!");
+    			System.out.print(rowAffected + " Data Update Successfully!!");
     		}
     		
-
+    		//Process the result
+    		
+            
         } catch (SQLException e) {
             System.out.println("Connection failed!");
             e.printStackTrace();
-        }  
+        }
+        
+
     }
 }
